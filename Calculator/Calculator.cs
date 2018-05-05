@@ -4,81 +4,131 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Calculator
 {
     public class Calculator
     {
-        public decimal currentValue;
-        public decimal enterValue;
+        public decimal num_1;
+        public decimal num_2;
+        public string operation;
+        public decimal solution;
 
-        public void Add(decimal enterValue)
+        public Calculator() { }
+
+        public void EnterValue(decimal num_1, string operation, decimal num_2)
         {
-            currentValue += enterValue;
+            Num_1 = num_1;
+            Operation = operation;
+            Num_2 = num_2;
+
         }
 
-        public void Subtract(decimal enterValue)
+        public decimal Num_1
         {
-            currentValue -= enterValue;
+            get
+            {
+                return num_1;
+            }
+            set
+            {
+                num_1 = value;
+            }
         }
 
-        public void Multiply(decimal enterValue)
+        public decimal Num_2
         {
-            currentValue *= enterValue;
+            get
+            {
+                return num_2;
+            }
+            set
+            {
+                num_2 = value;
+            }
         }
 
-        public void Divide(decimal enterValue)
+        public string Operation
         {
-            currentValue /= enterValue;
+            get
+            {
+                return operation;
+            }
+            set
+            {
+                operation = value;
+            }
         }
 
-        public void Reciprocal(decimal enterValue)
+        public string Add()
         {
-            currentValue = 1 / enterValue;
+            operation = "+";
+            return operation;
         }
 
-        public void SquareRoot(decimal enterValue)
+        public string Subtract()
         {
-            currentValue = (decimal)Math.Sqrt(Convert.ToDouble(enterValue));
+            operation = "-";
+            return operation;
         }
 
-        public decimal Equals()
+        public string Multiply()
         {
-            return currentValue;
+            operation = "*";
+            return operation;
+        }
+
+        public string Divide()
+        {
+            operation = "/";
+            return operation;
+        }
+
+        public decimal Reciprocal(decimal num_1)
+        {
+            solution = 1 / num_1;
+            return solution;
+        }
+
+        public decimal SquareRoot(decimal num_1)
+        {
+            solution = (decimal)Math.Sqrt(Convert.ToDouble(num_1));
+            return solution;
         }
 
         public void Clear()
         {
-            currentValue = 0;
-            enterValue = 0;
+            num_1 = 0;
+            operation = "";
+            num_2 = 0;
+            solution = 0;
         }
 
-        public decimal CurentValue
+
+        public decimal Equal()
         {
-            set
+            switch(operation)
             {
-                currentValue = value;
-            }
-            get
-            {
-                return currentValue;
+                case "+":
+                    solution = Decimal.Add(num_1, num_2);
+                    return solution;
+                case "-":
+                    solution = Decimal.Subtract(num_1, num_2);
+                    return -(solution);
+                case "*":
+                    solution = Decimal.Multiply(num_1, num_2);
+                    return solution;
+                case "/":
+                    solution = Decimal.Divide(num_2, num_1);
+                    return solution;
+                default:
+                    return solution;
             }
         }
 
-        public decimal EnterValue
-        {
-            set
-            {
-                enterValue = value;
-            }
-            get
-            {
-                return enterValue;
-            }
-        }
         
 
-
-
+        
 
     }
 }
