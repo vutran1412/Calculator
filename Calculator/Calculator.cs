@@ -4,18 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
+/*
+ * Application: Calculator
+ * Author: Vu Tran
+ */
 namespace Calculator
 {
+    // The Calculator class, this is where all the calculator's functions are implemented
     public class Calculator
     {
+        // The two operands that the calculator class will accept
         public decimal num_1;
         public decimal num_2;
+        // The operator will be assigned as a string
         public string operation;
+        // The solution will be returned as a decimal
         public decimal solution;
 
+        // Empty Constructor 
         public Calculator() { }
 
+        // The EnterValue method accepts the two operands and the operation that user wants to execute
         public void EnterValue(decimal num_1, string operation, decimal num_2)
         {
             Num_1 = num_1;
@@ -24,6 +33,7 @@ namespace Calculator
 
         }
 
+        // Getters and Setters
         public decimal Num_1
         {
             get
@@ -60,6 +70,8 @@ namespace Calculator
             }
         }
 
+        /* These methods set the pending operation to the user's desired operation 
+         * and returns the operation as a string*/
         public string Add()
         {
             operation = "+";
@@ -84,18 +96,24 @@ namespace Calculator
             return operation;
         }
 
+        /* The Reciprocal operation does not need a second operand, 
+        since user only needs the first input to calculate the inverse.
+        The method returns a decimal value. */
         public decimal Reciprocal(decimal num_1)
         {
             solution = 1 / num_1;
             return solution;
         }
-
+        
+        /* The SquareRoot operation does not need a second operand, 
+         * since we only need the first input. The method returns a decimal value. */
         public decimal SquareRoot(decimal num_1)
         {
             solution = (decimal)Math.Sqrt(Convert.ToDouble(num_1));
             return solution;
         }
 
+        // This method clears out all the data from the calculator class
         public void Clear()
         {
             num_1 = 0;
@@ -104,10 +122,12 @@ namespace Calculator
             solution = 0;
         }
 
-
+        /* The Equal method is where all the basic arithmetic calculations are performed,
+        the Decimal class has several useful built in methods
+        https://msdn.microsoft.com/en-us/library/system.decimal(v=vs.110).aspx */
         public decimal Equal()
         {
-            switch(operation)
+            switch(operation) // switch case statements are more appropriate in this application
             {
                 case "+":
                     solution = Decimal.Add(num_1, num_2);
