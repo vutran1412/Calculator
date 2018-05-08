@@ -134,7 +134,7 @@ namespace Calculator
                     return solution;
                 case "-":
                     solution = Decimal.Subtract(num_1, num_2);
-                    return -(solution);
+                    return -(solution); // 
                 case "*":
                     solution = Decimal.Multiply(num_1, num_2);
                     return solution;

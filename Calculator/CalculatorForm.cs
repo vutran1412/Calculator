@@ -238,6 +238,57 @@ namespace Calculator
                 newNumber = true;
                 isDecimal = false;
             }
+
         }
+
+        // Clears memory 
+        private void btnMC_Click(object sender, EventArgs e)
+        {
+            if (!newNumber)
+            {
+                MemoryCalculator memCalc = new MemoryCalculator();
+                memCalc.MemoryClear();
+                newNumber = true;
+                isDecimal = false;
+            }
+        }
+
+        // Recall memory
+        private void btnMR_Click(object sender, EventArgs e)
+        {
+            if (!newNumber)
+            {
+                MemoryCalculator memCalc = new MemoryCalculator();
+                firstNumber = memCalc.MemoryRecall();
+                newNumber = true;
+                isDecimal = false;
+                lblDisplay.Text = memCalc.ToString();
+            }
+        }
+
+        // Adds the current value to value stored in memory
+        private void btnMAdd_Click(object sender, EventArgs e)
+        {
+            if (!newNumber)
+            {
+                MemoryCalculator memCalc = new MemoryCalculator();
+                memCalc.MemoryAdd(firstNumber);
+                newNumber = true;
+                isDecimal = false;
+            }
+        }
+
+        // Stores the Calculator's current value in memory
+        private void btnMS_Click(object sender, EventArgs e)
+        {
+            if (!newNumber)
+            {
+                MemoryCalculator memCalc = new MemoryCalculator();
+                memCalc.MemmoryStore(firstNumber);
+                newNumber = true;
+                isDecimal = false;
+            }
+        }
+
     }
 }
